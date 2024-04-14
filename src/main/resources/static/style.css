@@ -1,0 +1,384 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+/* Custom properties */
+:root{
+    --ff-primary: "Source Code Pro", Sans-serif;
+    --ff-secondary: "Source Code Pro", monospace;
+    --fw-reg: 300;
+    --fw-bold: 900;
+
+    --clr-light: #fff;
+    --clr-dark: #303030;
+    --clr-favorite: #9bf6ff;
+
+    --fs-h1: 4.5rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+
+    --fs-body: 1rem;
+    /* 1rem=16px */
+
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,0.25)
+    0.125em 0.125em 0.25em rgba(0,0,0,.15);
+    /* bs=box-shadow */
+}
+@media (min-width: 800px) {
+    :root{
+        --fs-h1: 72px;
+        --fs-h2: 60px;
+        --fs-h3: 24px;
+        --fs-body: 20px;
+
+    }
+
+}
+/* label button */
+.nav {
+    position: fixed;
+    background: var(--clr-dark);
+    color: var(--clr-dark);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    transform: translateX(100%);
+    transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: inherit;
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-h2);
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: var(--clr-favorite);
+}
+
+.nav-toggle {
+    padding: .5em;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    z-index: 1000;
+}
+
+.nav-toggle {
+    padding: .5em;
+    background: var(--clr-favorite);
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    z-index: 1000;
+}
+.nutt {
+    display: block;
+    position: relative;
+}
+
+.nutt,
+.nutt::before,
+.nutt::after {
+    background: black;
+    width: 2em;
+    height: 3px;
+    border-radius: 1em;
+    transition: transform 250ms ease-in-out;
+}
+
+/* .nutt {
+    display: block;
+    position: relative;
+}
+
+.nutt,
+.nutt::before,
+.nutt::after {
+    background: var(--clr-accent);
+    width: 2em;
+    height: 3px;
+    border-radius: 1em;
+    transition: transform 250ms ease-in-out;
+}
+
+.nutt::before,
+.nutt::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+} */
+
+
+/* General styles */
+body{
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+    margin: 0;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+}
+
+section,
+footer {
+    padding: 5em 4em;
+}
+img{
+    display: block;
+    max-width: 100%;
+}
+bold { font-weight: var(--fw-bold);}
+
+/* :focus {
+    outline: 3px solid var(--clr-favorite);
+    outline-offset: 3px;
+} */
+
+/* Buttons */
+.btn {
+    /* display: inline-block ; */
+    padding: .8em 2.5em;
+    background: var(--clr-favorite);
+    color: var(--clr-dark);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: var(--fw-bold);
+    transition: transform 200ms ease-in-out;
+
+}
+.btn:hover{
+    transform: scale(1.1);
+    outline: 3px solid var(--clr-favorite);
+    outline-offset: 3px;
+}
+
+/* Typography */
+h1,
+h2,
+h3{
+    line-height: 1.1;
+    margin:0;
+
+}
+h1{font-size: var(--fs-h1)}
+h2{font-size: var(--fs-h2)}
+h3{font-size: var(--fs-h3)}
+p {font-size: var(--fs-p)}
+
+.section-title{
+    margin-bottom: .25em;
+    font-family: var(--ff-primary);
+}
+.section-title-intro{
+    font-weight: var(--fw-reg);
+}
+
+/* /* em=?px should not be used since you will maynot remember or know?px it was/ */
+
+.section-title-intro bold{
+    display: block;
+}
+.section-subtitle {
+    margin:0;
+    font-size: var(--fs-h3);
+}
+
+.section-subtitle-intro,
+.section-subtitle-about-me{
+    background: var(--clr-favorite);
+    padding: .25em 1em;
+    font-family: var(--ff-secondary);
+    margin-bottom: 1em;
+}
+
+/* header */
+
+nav{display: none;}
+
+/* Intro section */
+.intro{
+    position: relative;
+}
+/* .section-subtitle-intro{
+    display: inline-block;
+} */
+.intro-img{
+    box-shadow: var(--bs);
+}
+
+@media (min-width: 600px){
+    .intro {
+        display: grid;
+        width: min-content;
+        margin: 0 auto;
+        grid-column-gap: 1em;
+        grid-template-areas:
+
+            "img title"
+            "img subtitle";
+        grid-template-columns: min-content max-content;
+    }
+
+    .intro-img{
+        grid-area: img;
+        min-width: 250px;
+        position: relative;
+        z-index: 2;
+
+        /* look up for z-index and position vysoky*/
+    }
+    .section-subtitle-intro {
+        align-self: start;
+        grid-column: -1 / 1;
+        grid-row: 2;
+        text-align: right;
+        position: relative;
+        left: -1.5em;
+        width: calc(100% + 1.5em);
+    }
+}
+/* My work section */
+.my-works{
+    background-color: var(--clr-dark);
+    background-image: url("images/services-bg.jpg");
+    background-size:cover;
+    color: var(--clr-light);
+    text-align: center;
+
+    /*background-blend-mode: multiply; */
+}
+.section-title-my-works{
+    color: var(--clr-favorite);
+    position: relative;
+}
+.section-title-my-works::after {
+    content: '';
+    display: block;
+    width: 2em;
+    height: 1px;
+    margin: 0.5em auto 1em;
+    background: currentColor;
+    opacity: 0.5em;
+}
+.works{
+    padding-bottom: 4em;
+
+}
+.my-work{
+    max-width: 500px;
+    /* margin: 0 auto; */
+    padding: .5em;
+    text-align: center;
+
+
+}
+
+@media (min-width: 800px){
+    .works {
+        display: flex;
+        max-width: 1000px;
+        margin:0 auto
+
+
+    }
+    .my-work + .my-work {
+        margin-left: 2em;
+    }
+}
+
+/* About me section */
+
+.about-me{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.img-about-me{
+    box-shadow: var(--bs);
+}
+
+@media (min-width: 600px) {
+    .about-me{
+        display: grid;
+        /* lepší je to psát ve flexu, víc html a mín css. */
+        grid-template-columns: 1fr 200px;
+        grid-template-areas:
+            "title img"
+            "subtitle img"
+            "text img";
+        grid-column-gap: 2em;
+
+    }
+    .section-title-about-me {
+        grid-area: title;
+
+    }
+
+    .section-subtitle-about-me {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        position: relative;
+        left: -1em;
+        width: calc(100% + 4em);
+        padding-left: 1em;
+        padding-right: calc(200px + 4em)
+
+    }
+    .img-about-me{
+        grid-area: img;
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/* My portfolio */
+
+.my-portfolio{
+    background-color: var(--clr-dark);
+    color: var(--clr-favorite);
+    text-align: center;
+}
+
+#garden{ /* mám problém s tímto obrázkem. */
+    max-height: 411.27px;
+    min-height: 280px;
+    /* max-width: 308px;   */
+
+}
+/*.portfolio-item{
+   max-height: 411.27px;
+   max-width: 30px;
+   object-fit: cover;
+} */
+
+.imgs-my-portfolio{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* tried: max and non max height, width, object-fit. max-height of the rest is 411.27px. */
+
+}
